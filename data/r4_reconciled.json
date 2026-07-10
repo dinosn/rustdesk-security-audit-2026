@@ -1,0 +1,130 @@
+[
+  {
+    "title": "AudioFormat/AudioFrame accepted and played on host speakers without audio permission or voice-call acceptance",
+    "bug_class": "PERM-GATE-BYPASS",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "Medium"
+  },
+  {
+    "title": "ToggleVirtualDisplay plugs/unplugs a virtual monitor on the host with no ControlPermissions check at all",
+    "bug_class": "PERM-GATE-BYPASS",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "Low"
+  },
+  {
+    "title": "turn_off_privacy() does not re-check the privacy_mode ControlPermission (asymmetric with turn_on_privacy)",
+    "bug_class": "PERM-GATE-BYPASS",
+    "claude": "confirmed",
+    "csev": "Low",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "Android mouse/touch input injection bypasses keyboard/mouse control-permission gate entirely",
+    "bug_class": "PERM-GATE-BYPASS (missing authorization re-check before privileged action)",
+    "claude": "confirmed",
+    "csev": "High",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "Android key-event input injection bypasses keyboard control-permission gate entirely",
+    "bug_class": "PERM-GATE-BYPASS (missing authorization re-check before privileged action)",
+    "claude": "confirmed",
+    "csev": "High",
+    "openai": "confirmed",
+    "osev": "High"
+  },
+  {
+    "title": "Plugin block-input routing keyed by unauthenticated self-reported LoginRequest.my_id allows session-identity collision",
+    "bug_class": "SELF-REPORTED-IDENTITY TRUST (unauthenticated peer-supplied value used as a security-relevant lookup key)",
+    "claude": "corrected",
+    "csev": "Medium",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "2FA re-prompt skipped by a session-recency cache keyed purely on self-reported (my_id, my_name, session_id) \u2014 no cryptographic proof ties the cache hit to the connection that actually completed 2FA",
+    "bug_class": "SELF-REPORTED-IDENTITY TRUST",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "Medium"
+  },
+  {
+    "title": "Rendezvous PunchHole/RequestRelay/FetchLocalAddr-supplied ControlPermissions override locally-configured permission gates",
+    "bug_class": "CLIENT-TRUSTS-SERVER-MSG / Missing Authentication for Critical Function (CWE-306) leading to Improper Access Control (CWE-284)",
+    "claude": "confirmed",
+    "csev": "High",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "Unauthenticated UDP RegisterPkResponse(UUID_MISMATCH) forces persisted device-ID regeneration and key-confirmation reset",
+    "bug_class": "CLIENT-TRUSTS-SERVER-MSG / Unauthenticated persisted-config mutation (CWE-306 / CWE-345)",
+    "claude": "confirmed",
+    "csev": "Medium (as rated by candidate)",
+    "openai": "confirmed",
+    "osev": "Low"
+  },
+  {
+    "title": "Remote directory-listing filename becomes an unsanitized local write-destination base \u2014 arbitrary file write via directory traversal on file download",
+    "bug_class": "path-traversal-to-arbitrary-write (missing validation of the join BASE, only the trailing NAME is checked)",
+    "claude": "confirmed",
+    "csev": "Critical",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "Switch-sides reconnection skips TOTP 2FA re-verification entirely",
+    "bug_class": "missing-reauthorization-gate",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "Switch-sides target/route is taken from unauthenticated peer-supplied LoginRequest.my_id, letting an already-authorized peer force the controlled host to dial an arbitrary third-party RustDesk ID",
+    "bug_class": "self-reported-identity-trust",
+    "claude": "confirmed",
+    "csev": "Low",
+    "openai": "confirmed",
+    "osev": "Low"
+  },
+  {
+    "title": "Login-failure lockout is scoped strictly per source IP (/64,/56,/48 for IPv6), giving each distinct source address its own independent guess budget \u2014 verified per-IP-only design, distributed brute force feasible against the opt-in low-entropy numeric one-time password",
+    "bug_class": "rate-limit-scope-gap",
+    "claude": "confirmed",
+    "csev": "Low",
+    "openai": "confirmed",
+    "osev": "Low"
+  },
+  {
+    "title": "aligned_u8_vec allocates with a custom alignment but Vec<u8> always deallocates at align=1 \u2014 Vec::from_raw_parts contract violation",
+    "bug_class": "memory-safety / unsound unsafe code (mismatched alloc/dealloc Layout, Vec::from_raw_parts contract violation)",
+    "claude": "corrected",
+    "csev": "Low (code-quality/soundness defect; fix as hygiene, not as a live security vulnerability)",
+    "openai": "needs-live-validation",
+    "osev": "Low"
+  },
+  {
+    "title": "Root CLI provisioning commands (--password/--set-unlock-pin/--config/--option) funnel secrets to any unprivileged local user who is the sole `--server` process, via unauthenticated single-candidate UID trust in select_server_uid_for_user_main_ipc",
+    "bug_class": "local-authz-bypass / self-reported-identity-trust (client-side peer-identity resolution trusts an unauthenticated, spoofable signal)",
+    "claude": "confirmed",
+    "csev": "High",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "SSRF / arbitrary internal-network connect via unauthenticated relay_server field from rendezvous server (PunchHoleResponse / RelayResponse)",
+    "bug_class": "CLIENT-TRUSTS-SERVER-MSG / SSRF",
+    "claude": "confirmed",
+    "csev": "High",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  }
+]

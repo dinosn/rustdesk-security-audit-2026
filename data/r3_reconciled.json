@@ -1,0 +1,254 @@
+[
+  {
+    "title": "Enter-key submit handler bypasses password-only approve-mode Accept-button gating, auto-authorizing unattended Android host connections without password check",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/flutter/lib/models/server_model.dart",
+    "bug_class": "authz-bypass",
+    "claude": "corrected",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "Same Enter-key-submit bypass also auto-accepts incoming voice calls under password approve-mode via the shared showClientDialog helper",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/flutter/lib/models/server_model.dart",
+    "bug_class": "authz-bypass",
+    "claude": "corrected",
+    "csev": "Low",
+    "openai": "needs-live-validation",
+    "osev": "Low"
+  },
+  {
+    "title": "Incoming host Clipboard sync is applied to the controller's OS clipboard without ever checking the host-granted 'clipboard' permission",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/flutter/lib/models/model.dart",
+    "bug_class": "privacy-bypass",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "confirmed",
+    "osev": "Medium"
+  },
+  {
+    "title": "Attacker-controlled remote file name overrides file-transfer download destination -> arbitrary absolute-path file write on the controller's machine",
+    "file": "flutter/lib/models/file_model.dart",
+    "bug_class": "path-traversal",
+    "claude": "confirmed",
+    "csev": "Critical",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "scroll() sends wheel events without the keyboardPerm check present on sibling sendMouse()/inputKey()",
+    "file": "flutter/lib/models/input_model.dart",
+    "bug_class": "authz-bypass",
+    "claude": "corrected",
+    "csev": "Medium",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "FFI install_install_me path parameter injected unescaped into UAC-elevated batch installer script",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/flutter_ffi.rs",
+    "bug_class": "command-injection",
+    "claude": "corrected",
+    "csev": "Low",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "FFI main_create_shortcut peer-id parameter injected unescaped into VBScript used to build a desktop shortcut",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/flutter_ffi.rs",
+    "bug_class": "command-injection",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "Medium"
+  },
+  {
+    "title": "Custom-server license signature check is bypassed by trying unsigned JSON parse first \u2014 attacker-controlled filename/CLI string silently repoints rendezvous/relay/api server AND the pinned trust-anchor public key",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/custom_server.rs",
+    "bug_class": "authz-bypass",
+    "claude": "confirmed",
+    "csev": "High",
+    "openai": "confirmed",
+    "osev": "High"
+  },
+  {
+    "title": "CRLF/HTTP request injection into proxy CONNECT request via unsanitized target host (SSRF/request-smuggling against configured HTTP(S) proxy)",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/libs/hbb_common/src/proxy.rs",
+    "bug_class": "ssrf",
+    "claude": "confirmed",
+    "csev": "High",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "Proxy-Authorization credentials sent Base64-cleartext over an unencrypted TCP connection to HTTP-scheme proxies",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/libs/hbb_common/src/proxy.rs",
+    "bug_class": "logic",
+    "claude": "corrected",
+    "csev": "Low",
+    "openai": "corrected",
+    "osev": "Low"
+  },
+  {
+    "title": "TLS certificate validation for HTTPS-proxy connections can be permanently disabled by a network-induced connection error, then cached for the process lifetime",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/libs/hbb_common/src/proxy.rs",
+    "bug_class": "logic",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "confirmed",
+    "osev": "Medium"
+  },
+  {
+    "title": "Non-ASCII keyboard input (Translate/Legacy KeyEvent) writes host OS clipboard without checking the Clipboard permission (uinput/Wayland path)",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/input_service.rs",
+    "bug_class": "authz-bypass",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "confirmed",
+    "osev": "Medium"
+  },
+  {
+    "title": "Non-ASCII/Unicode keyboard sequence typing writes host OS clipboard without checking the Clipboard permission (Wayland RDP-portal path)",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/rdp_input.rs",
+    "bug_class": "authz-bypass",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "confirmed",
+    "osev": "Medium"
+  },
+  {
+    "title": "Privacy Mode is enforced only by a one-shot client-cooperative notice \u2014 other subscribed viewers keep receiving the real, unblanked desktop",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/video_service.rs",
+    "bug_class": "privacy-bypass",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "Medium"
+  },
+  {
+    "title": "privacy_mode::switch() drops active privacy-mode protection with no ownership check or notification",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/privacy_mode.rs",
+    "bug_class": "privacy-bypass",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "Medium"
+  },
+  {
+    "title": "wayland::get_capturer_for_display() hardcodes privacy_mode_id=0, discarding the live privacy-mode owner",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/wayland.rs",
+    "bug_class": "privacy-bypass",
+    "claude": "confirmed",
+    "csev": "Low",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "Unauthenticated session D-Bus NewConnection + unchecked request_name() allow local name-squatting and uni-link (password) interception",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/dbus.rs",
+    "bug_class": "authz-bypass",
+    "claude": "corrected",
+    "csev": "Low",
+    "openai": "confirmed",
+    "osev": "Low"
+  },
+  {
+    "title": "Unquoted local-account username in root-privileged install.scpt enables shell injection to root during RustDesk daemon/agent install",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/platform/privileges_scripts/install.scpt",
+    "bug_class": "command-injection",
+    "claude": "needs-live-validation",
+    "csev": "High",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "elevate() concatenates unescaped argv into a root-privileged AppleScript 'do shell script' string (generic shell-injection primitive)",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/platform/macos.rs",
+    "bug_class": "command-injection",
+    "claude": "corrected",
+    "csev": "Low",
+    "openai": "confirmed",
+    "osev": "Low"
+  },
+  {
+    "title": "update_me()'s inline AppleScript also concatenates app_name unescaped into a root shell command (same defect pattern, weak reachability)",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/platform/macos.rs",
+    "bug_class": "command-injection",
+    "claude": "confirmed",
+    "csev": "Low",
+    "openai": "confirmed",
+    "osev": "Low"
+  },
+  {
+    "title": "Shared, predictable /tmp/.Xauthority used for headless X11 sessions \u2014 symlink/pre-seed attack enables X11 auth-cookie theft and remote-session hijack across local users",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/platform/linux_desktop_manager.rs",
+    "bug_class": "privilege-escalation",
+    "claude": "corrected",
+    "csev": "Low",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "Active-session username interpolated into getent shell commands with inconsistent/incomplete quoting",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/platform/linux.rs",
+    "bug_class": "command-injection",
+    "claude": "confirmed",
+    "csev": "Low",
+    "openai": "needs-live-validation",
+    "osev": "Low"
+  },
+  {
+    "title": "ToggleVirtualDisplay has no per-permission authorization check \u2014 any non-view_camera peer can plug in/out virtual monitors",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/connection.rs",
+    "bug_class": "authz-bypass",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "confirmed",
+    "osev": "Medium"
+  },
+  {
+    "title": "virtual_display::plug_in_monitor / plug_out_monitor forward an unvalidated u32 monitor index straight into the native/kernel IDD driver call with no range check",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/libs/virtual_display/src/lib.rs",
+    "bug_class": "memory",
+    "claude": "corrected",
+    "csev": "Informational",
+    "openai": "rejected",
+    "osev": "Low"
+  },
+  {
+    "title": "Printer driver install path is resolved from current_exe()'s parent directory with no integrity check \u2014 local-write-then-install pattern if the running binary is not in an admin-protected directory",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/libs/remote_printer/src/setup/setup.rs",
+    "bug_class": "privilege-escalation",
+    "claude": "needs-live-validation",
+    "csev": "Medium",
+    "openai": "needs-live-validation",
+    "osev": "High"
+  },
+  {
+    "title": "show_my_cursor whiteboard broadcast is self-granted by the controller with no host-consent check, unlike every sibling permission",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/connection.rs",
+    "bug_class": "privacy-bypass",
+    "claude": "corrected",
+    "csev": "Low",
+    "openai": "corrected",
+    "osev": "Low"
+  },
+  {
+    "title": "register_whiteboard() spawns an unbounded OS thread on every show_my_cursor=Yes toggle with no idempotency/state check",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/whiteboard/client.rs",
+    "bug_class": "logic",
+    "claude": "confirmed",
+    "csev": "Low",
+    "openai": "confirmed",
+    "osev": "Low"
+  },
+  {
+    "title": "2FA \"Trusted Devices\" bypass via unauthenticated, self-reported LoginRequest fields (hwid/my_id/my_name/my_platform derived from non-secret machine UUID)",
+    "file": "/Users/krasn/tools/raptor/targets/rustdesk/src/server/connection.rs",
+    "bug_class": "authz-bypass",
+    "claude": "confirmed",
+    "csev": "Medium",
+    "openai": "confirmed",
+    "osev": "Medium"
+  }
+]
