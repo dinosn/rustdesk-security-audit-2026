@@ -2,8 +2,6 @@
 
 Security assessment of **RustDesk** (open-source remote desktop) — **client and server** — covering the pre-auth network surface, the peer-to-peer secure channel, the client remote-control/file-transfer paths, IPC/privilege boundaries, and the Dart/Flutter + FFI layers.
 
-> ⚠️ **Private / undisclosed.** These are previously-unreported (0-day) findings. This repository is private and for internal tracking only. **Do not publish or share externally** until coordinated disclosure with the RustDesk maintainers is complete.
-
 ---
 
 ## Targets
